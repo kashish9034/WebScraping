@@ -41,7 +41,7 @@ public class Scrape {
 	}
 
 	private static void checkChange(String text) {
-
+		
 		try {
 			byte[] input = new byte[1000];
 			FileInputStream fis = new FileInputStream("persist.txt");
@@ -49,11 +49,13 @@ public class Scrape {
 			fis.close();
 			String str = new String(input,"UTF-8");
 			if (text.equalsIgnoreCase(str.trim())==false) {
+				System.out.println("Rates changed");
 				FileOutputStream fos = new FileOutputStream("persist.txt");
 				fos.write(text.getBytes());
 				fos.close();
 				sendMail(text);
-			}
+			}else
+			{System.out.println("There are no changes observed");}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
