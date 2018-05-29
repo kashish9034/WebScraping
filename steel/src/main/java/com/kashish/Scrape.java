@@ -30,7 +30,7 @@ public class Scrape {
 		client.getOptions().setJavaScriptEnabled(false);
 		try {
 			String searchUrl = "https://www.ingotrates.com/";
-			page = client.getPage(searchUrl);
+			page = (HtmlPage) client.getPage(searchUrl);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
